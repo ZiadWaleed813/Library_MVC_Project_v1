@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-4">
+    <div class="jumbotron text-center bg-light p-5 shadow-sm rounded">
+        <h1 class="display-4">Welcome to the Library Management System</h1>
+        <p class="lead">Your one-stop solution for managing books and authors efficiently.</p>
+        <hr class="my-4">
+        <p>Explore the collection of books or manage authors using the buttons below.</p>
+        <div>
+            <a href="/Books" class="btn btn-primary btn-lg mr-3">View Books</a>
+            <a href="/Authors" class="btn btn-secondary btn-lg">Manage Authors</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Books</h5>
+                    <p class="card-text">Browse, borrow, return, and manage the collection of books available in the
+                        library.</p>
+                    <a href="/Books" class="btn btn-outline-primary">Go to Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Authors</h5>
+                    <p class="card-text">View and manage the authors behind the wonderful books in the library's
+                        collection.</p>
+                    <a href="/Authors" class="btn btn-outline-secondary">Go to Authors</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

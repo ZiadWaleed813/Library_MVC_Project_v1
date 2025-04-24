@@ -1,0 +1,15 @@
+@model SharedModels.Author
+
+<div class="container mt-4">
+    <h2 class="text-primary">Edit Author</h2>
+    <form asp-action="Edit" method="post" class="mt-4">
+        <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Author Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+        <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+</div>
