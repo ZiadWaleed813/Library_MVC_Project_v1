@@ -1,0 +1,23 @@
+@model SharedModels.Book
+
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<div class="container mt-4">
+    <h1>Confirm Deletion</h1>
+    <p>
+        Are you sure you want to delete the book <strong>@Model.Name</strong> by
+        <strong>@Model.Author?.Name</strong>?
+    </p>
+    <p class="text-warning">
+        <strong>Note:</strong> This action cannot be undone.
+    </p>
+
+    <form method="post" asp-action="DeleteConfirmed">
+        <input type="hidden" name="id" value="@Model.ID" />
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="/Books" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

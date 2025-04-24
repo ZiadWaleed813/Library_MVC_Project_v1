@@ -1,0 +1,14 @@
+@model SharedModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="mt-5 text-center">
+    <h1 class="text-danger">Oops, something went wrong!</h1>
+    <p>
+        We couldn't process your request. Please try again later.<br>
+        <strong>Request ID:</strong> @Model?.RequestId
+    </p>
+    <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+</div>

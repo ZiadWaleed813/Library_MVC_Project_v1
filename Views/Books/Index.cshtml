@@ -1,0 +1,72 @@
+@model IEnumerable<SharedModels.Book>
+
+<div class="container mt-4">
+    <!-- Success or Error Message Display -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Message"]
+        </div>
+    }
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="text-primary">Library Books</h1><a href="/Books/Create" class="btn btn-success">Add New Book</a>
+    </div>
+    <table class="table table-hover shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Name</td>
+                    <td>@book.Author?.Name</td>
+                    <td>
+                        @if (book.IsAvailable)
+                        {
+                            <span>Available</span>
+                        }
+                        else
+                        {
+                            <span>Borrowed</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            @if (book.IsAvailable)
+                            {
+                                <!-- Borrow Button -->
+                                <form asp-controller="Borrowing" asp-action="Borrow" method="post" style="display:inline;">
+                                    <input type="hidden" name="bookId" value="@book.ID" />
+                                    <button type="submit" class="btn btn-primary btn-sm">Borrow</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-controller="Borrowing" asp-action="Return" method="post" style="display:inline;">
+                                    <input type="hidden" name="bookId" value="@book.ID" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Return</button>
+                                </form>
+                            }
+                        }
+                        <a href="/Books/Edit/@book.ID" class="btn btn-info btn-sm"
+                            style="background-color: #17a2b8; color: white;">Edit</a>
+
+                        <a href="/Books/Delete/@book.ID" class="btn btn-warning btn-sm"
+                            style="background-color: #ffc107; color: black;"
+                            onclick="return confirm('Are you sure you want to delete this property?');">Delete</a>
+
+                        <a href="/Books/Details/@book.ID" class="btn btn-success btn-sm"
+                            style="background-color: #28a745; color: white;">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

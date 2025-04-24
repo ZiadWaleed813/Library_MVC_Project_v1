@@ -1,0 +1,23 @@
+@model SharedModels.Author
+
+<div class="container mt-4">
+    <h2 class="text-primary">Author Details</h2>
+    <div class="mt-3">
+        <h4><strong>@Model.Name</strong></h4>
+        <h5 class="mt-3">Books:</h5>
+        @if (Model.Books != null && Model.Books.Any())
+        {
+            <ul>
+                @foreach (var book in Model.Books)
+                {
+                    <li>@book.Name</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted">No books available.</p>
+        }
+    </div>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>
